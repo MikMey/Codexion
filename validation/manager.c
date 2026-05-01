@@ -24,6 +24,7 @@ bool    init_manager(t_dict **config, int argc, char **argv)
     }
     if (!(assign_args(config, argv)))
         return(false);
+    return(true);
 }
 
 bool    assign_args(t_dict **config, char **argv)
@@ -41,7 +42,12 @@ bool    assign_args(t_dict **config, char **argv)
             return(false);
         (*config[i]).value = (unsigned int)malloc(sizeof(unsigned int));
         (*config[i]).value = buff
+        i++;
     }
+    ft_strlcpy((*config[i]).value, argv[i + 1], strlen(argv[i + 1]));
+    if (!(strcmp(argv[i + 1], "fifo")) || !(strcmp(argv[i + 1], "edf")))
+        return(false);
+    return(true);
 }
 
 void    get_keys(char ***keys)
@@ -53,12 +59,12 @@ void    get_keys(char ***keys)
     while (i <= 8)
         (*keys)[i] = ft_calloc(sizeof(char), 30);
 
-    (*keys)[0] = CODERS;
-    (*keys)[1] = BURNOUT;
-    (*keys)[2] = COMPILE;
-    (*keys)[3] = DEBUG;
-    (*keys)[4] = REFRACTOR;
-    (*keys)[5] = REQUIRED;
-    (*keys)[6] = COOLDOWN;
-    (*keys)[7] = SCHEDULER;
+    ft_strlcpy((*keys)[0], CODERS, strlen(CODERS));
+    ft_strlcpy((*keys)[1], BURNOUT, strlen(BURNOUT));
+    ft_strlcpy((*keys)[2], COMPILE, strlen(COMPILE));
+    ft_strlcpy((*keys)[3], DEBUG, strlen(DEBUG));
+    ft_strlcpy((*keys)[4], REFRACTOR, strlen(REFRACTOR));
+    ft_strlcpy((*keys)[5], REQUIRED, strlen(REQUIRED));
+    ft_strlcpy((*keys)[6], COOLDOWN, strlen(COOLDOWN));
+    ft_strlcpy((*keys)[7], SCHEDULER, strlen(SCHEDULER));
 }
