@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.h                                       :+:      :+:    :+:   */
+/*   thread_ops.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/02 11:21:49 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/02 11:21:50 by mimeyer          ###   ########.fr       */
+/*   Created: 2026/05/02 11:21:35 by mimeyer           #+#    #+#             */
+/*   Updated: 2026/05/02 11:21:39 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALIDATION_H
-# define VALIDATION_H
+#ifndef THREAD_OPS_H
+# define THREAD_OPS_H
 
 # include "../tools.h"
 
-bool	init_manager(t_dict **config, int argc, char **argv);
-bool	assign_args(t_dict **config, char **argv);
-void	get_keys(char ***keys);
+int	compile(pthread_cond_t **cond_dongles, pthread_mutex_t **lock_dongles,
+		size_t burnout, size_t time);
+int	debug(size_t time);
+int	refractor(size_t time);
 
 #endif

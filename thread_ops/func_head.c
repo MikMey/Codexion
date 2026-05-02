@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.h                                       :+:      :+:    :+:   */
+/*   func_head.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/02 11:21:49 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/02 11:21:50 by mimeyer          ###   ########.fr       */
+/*   Created: 2026/05/02 11:24:49 by mimeyer           #+#    #+#             */
+/*   Updated: 2026/05/02 12:17:52 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALIDATION_H
-# define VALIDATION_H
+#include "thread_ops.h"
 
-# include "../tools.h"
-
-bool	init_manager(t_dict **config, int argc, char **argv);
-bool	assign_args(t_dict **config, char **argv);
-void	get_keys(char ***keys);
-
-#endif
+void	thread_ops(t_dict **args)
+{
+	compile
+    debug
+    refractor
+}

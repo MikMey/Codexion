@@ -12,12 +12,10 @@
 
 #include "codexion.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_dict *config;
-    
-    if (!(init_manager(&config, argc, argv)))
-        return;
-    
-    
+	t_dict	*config;
+
+	if (!(init_manager(&config, argc, argv)))
+		return ;
 }
