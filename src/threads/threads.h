@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.h                                       :+:      :+:    :+:   */
+/*   threads.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/02 11:21:49 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/29 16:44:02 by mimeyer          ###   ########.fr       */
+/*   Created: 2026/05/30 00:03:07 by mimeyer           #+#    #+#             */
+/*   Updated: 2026/05/30 00:05:10 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALIDATION_H
-# define VALIDATION_H
+#ifndef THREADS_H
+# define THREADS_H
 
-# include "../tools.h"
-# include "../types/types.h"
+# include "../thread_ops/thread_ops.h"
 
 #endif

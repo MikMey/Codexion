@@ -1,19 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.h                                       :+:      :+:    :+:   */
+/*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/02 11:21:49 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/29 16:44:02 by mimeyer          ###   ########.fr       */
+/*   Created: 2026/05/30 00:01:18 by mimeyer           #+#    #+#             */
+/*   Updated: 2026/05/30 00:07:33 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALIDATION_H
-# define VALIDATION_H
+#include "threads.h"
 
-# include "../tools.h"
-# include "../types/types.h"
-
-#endif
+void	monitor(t_w_threads *w_threads)
+{
+}

@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 11:21:57 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/29 16:44:47 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/05/29 23:29:46 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,11 @@
 # define REQUIRED 5
 # define COOLDOWN 6
 # define SCHEDULER 7
+
+# define M_TAKEN "has taken a dongle"
+# define M_COMPILE "is compiling"
+# define M_DEBUG "is debugging"
+# define M_REFRACTOR "is refactoring"
+# define M_BURNOUT "burned out"
 
 #endif

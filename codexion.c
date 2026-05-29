@@ -15,14 +15,13 @@
 int	main(int argc, char **argv)
 {
 	t_dict	*config;
+	char	*keys[] = (char *[]){CODERS, BURNOUT, COMPILE, DEBUG, REFRACTOR,
+			REQUIRED, COOLDOWN, SCHEDULER, NULL};
 
-	char *keys[] = (char *[]) {CODERS, BURNOUT, COMPILE, DEBUG, REFRACTOR, REQUIRED,
-			COOLDOWN, SCHEDULER, NULL};
-	
-	if (!(init_manager(&config, argc, argv))) 
+	if (!(init_manager(&config, argc, argv)))
 	{
 		printf("fu\n");
-		return 0;
+		return (0);
 	}
 	for (int i = 0; keys[i]; i++)
 	{

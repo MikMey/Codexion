@@ -12,22 +12,20 @@
 
 #include "coder.h"
 
-t_coder *coder_create(size_t idx, t_dongle *dongles)
+t_coder	*coder_create(size_t idx, t_dongle *dongles)
 {
-	t_coder			*coder;
+	t_coder	*coder;
 
 	coder = (t_coder *)malloc(sizeof(t_coder));
 	if (!coder)
-		return(coder);
-
+		return (coder);
 	pthread_mutex_init(&coder->lock, NULL);
 	pthread_cond_init(&coder->wake, NULL);
 	coder->idx = idx;
 	coder->state = C_BUSY;
 	coder->compile_start = 0;
 	coder->times_compiled = 0;
-
-	return(coder);
+	return (coder);
 }
 
 int	coder_free(t_coder *coder)
@@ -37,5 +35,5 @@ int	coder_free(t_coder *coder)
 	pthread_mutex_destroy(&coder->lock);
 	pthread_cond_destroy(&coder->wake);
 	free(coder);
-	return(0);
+	return (0);
 }

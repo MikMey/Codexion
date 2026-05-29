@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.h                                       :+:      :+:    :+:   */
+/*   append_msg.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/02 11:21:49 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/29 16:44:02 by mimeyer          ###   ########.fr       */
+/*   Created: 2026/05/29 17:37:40 by mimeyer           #+#    #+#             */
+/*   Updated: 2026/05/29 17:42:42 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALIDATION_H
-# define VALIDATION_H
+#include "utils.h"
 
-# include "../tools.h"
-# include "../types/types.h"
+/**
+ * unsafe but fun
+ */
+char	**append_msg(char **msg, char *arg)
+{
+	int	i;
 
-#endif
+	i = 0;
+	if (!msg)
+		return (NULL);
+	while (msg[i] && msg[i][0])
+		i++;
+	ft_strlcpy(msg[i], arg, ft_strlen(arg));
+	return (msg);
+}
