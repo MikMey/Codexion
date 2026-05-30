@@ -31,6 +31,9 @@
 # define COOLDOWN 6
 # define SCHEDULER 7
 
+# define FIFO 0
+# define EDF 1
+
 # define M_TAKEN "has taken a dongle"
 # define M_COMPILE "is compiling"
 # define M_DEBUG "is debugging"

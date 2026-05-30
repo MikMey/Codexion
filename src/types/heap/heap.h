@@ -24,11 +24,12 @@ typedef struct s_heap
 
 typedef struct s_node_heap
 {
-	pthread_cond_t	*wake;
+	pthread_cond_t	wake;
 	size_t			time;
 }					t_node_heap;
 
 t_heap				*heap_create(int size);
 int					heap_free(t_heap *heap);
+t_heap	*heap_insert(t_heap *heap, int time, pthread_cond_t wake);
 
 #endif

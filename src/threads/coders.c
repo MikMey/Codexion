@@ -20,6 +20,10 @@ void	coders(t_w_threads *w_threads)
 	times_compiled = 0;
 	while (times_compiled != w_threads->data[REQUIRED])
 	{
+		if (w_threads->data[SCHEDULER] == FIFO)
+			w_threads->heap = heap_insert(w_threads->heap, gettimeofday(NULL, NULL), w_threads->coder->wake);
+		else
+			w_threads->heap = heap_insert(w_threads->heap, w_threads->coder->compile_start, w_threads->coder->wake);
 		pthread_mutex_lock(&w_threads->coder->lock);
 		w_threads->coder->times_compiled = times_compiled;
 		w_threads->coder->state = C_WAIT;
@@ -49,6 +53,5 @@ void	coders(t_w_threads *w_threads)
 				w_threads->coder->idx, REFRACTOR) == 2)
 			break ;
 		times_compiled++;
-		// insert_heap
 	}
 }

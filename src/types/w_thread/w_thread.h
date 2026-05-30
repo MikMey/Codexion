@@ -27,4 +27,11 @@ typedef struct s_w_threads
 	int			*data;
 }				t_w_threads;
 
+typedef struct s_w_monitor
+{
+	t_coder		**coders;
+	t_log		*log;
+	int			*data;
+}	t_w_monitor
+
 #endif

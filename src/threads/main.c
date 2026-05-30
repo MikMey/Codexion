@@ -14,4 +14,5 @@
 
 void	heap_manager(t_w_threads *w_threads)
 {
+	
 }
