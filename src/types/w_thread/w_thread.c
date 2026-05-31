@@ -6,28 +6,22 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 15:29:50 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/29 16:43:06 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/05/31 20:38:19 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "w_thread.h"
 
-t_w_threads	*w_thread_create(t_coder *coder, t_dongle **dongles, t_heap *heap,
-		t_log *log)
+void	w_thread_create(t_configs *configs, int i)
 {
-	t_w_threads	*w_thread;
-
-	if (!coder || !dongles || !dongles[0] || !dongles[1] || !heap || !log)
-		return (NULL);
-	w_thread = malloc(sizeof(t_w_threads));
-	if (!w_thread)
-		return (NULL);
-	w_thread->coder = &coder;
-	w_thread->dongles[0] = &dongles[0];
-	w_thread->dongles[1] = &dongles[1];
-	w_thread->heap = &heap;
-	w_thread->log = &log;
-	return (w_thread);
+	configs->w_threads[i] = malloc(sizeof(t_w_threads *));
+	configs->w_threads[i]->coder = configs->coders[i];
+	configs->w_threads[i]->dongles[0] = configs->dongles[configs->data[CODERS]
+		% i];
+	configs->w_threads[i]->dongles[1] = configs->dongles[configs->data[CODERS]
+		% (i + 1)];
+	configs->w_threads[i]->heap = configs->heap;
+	configs->w_threads[i]->log = configs->log;
 }
 
 int	w_thread_free(t_w_threads *w_thread)

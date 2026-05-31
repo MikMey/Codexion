@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 11:21:57 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/29 23:29:46 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/05/30 14:26:22 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # include <sys/time.h>
 # include <unistd.h>
 
+# define DATA 8
+# define MAX 9999
+
 # define CODERS 0
 # define BURNOUT 1
 # define COMPILE 2
@@ -34,10 +37,10 @@
 # define FIFO 0
 # define EDF 1
 
-# define M_TAKEN "has taken a dongle"
-# define M_COMPILE "is compiling"
-# define M_DEBUG "is debugging"
-# define M_REFRACTOR "is refactoring"
-# define M_BURNOUT "burned out"
+# define M_TAKEN " has taken a dongle\n"
+# define M_COMPILE " is compiling\n"
+# define M_DEBUG " is debugging\n"
+# define M_REFRACTOR " is refactoring\n"
+# define M_BURNOUT " burned out\n"
 
 #endif

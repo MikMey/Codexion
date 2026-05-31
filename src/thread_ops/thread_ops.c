@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   thread_ops.c.c                                     :+:      :+:    :+:   */
+/*   thread_ops.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 11:24:49 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/30 00:04:55 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/05/31 21:31:15 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "thread_ops.h"
 #include <unistd.h>
 
-int	compile(t_coder *coder, t_dongle **dongles, t_log *log, int *data)
+int	compile(t_coder *coder, t_dongle **dongles, t_log *log, size_t *data)
 {
-	int	start;
+	size_t	start;
 
-	start = gettimeofday(NULL, NULL);
-	if (log_print(log, start, coder->idx, M_COMPILE, 0) == 2)
+	start = gettimems();
+	if (log_print(log, start, coder->idx, M_COMPILE, 0, 0) == 2)
 		return (1);
 	pthread_mutex_lock(&coder->lock);
 	coder->compile_start = start;
@@ -30,25 +30,25 @@ int	compile(t_coder *coder, t_dongle **dongles, t_log *log, int *data)
 		return (1);
 	while (1)
 	{
-		if (gettimeofday(NULL, NULL) >= (start + data[COMPILE]))
+		if (gettimems() >= (start + data[COMPILE]))
 			return (0);
 		usleep(data[COMPILE] / 32);
 	}
 }
 
-int	wait_log(t_log *log, int time_to_pass, int idx, char *arg)
+int	wait_log(t_log *log, size_t time_to_pass, int idx, char *arg)
 {
-	int	start;
+	size_t	start;
 
-	start = gettimeofday(NULL, NULL);
-	if (log_print(log, start, idx, arg, 0) == 2)
+	start = gettimems();
+	if (log_print(log, start, idx, arg, 0, 0) == 2)
 		return (1);
 	if (time_to_pass < 0 || time_to_pass > 99999)
 		return (1);
 	while (1)
 	{
-		if (gettimeofday(NULL, NULL) >= (start + time_to_pass))
+		if (gettimems() >= (start + time_to_pass))
 			return (0);
-		usleep(time_to_pass / 32);
+		usleep((time_to_pass * 1000) / 32);
 	}
 }

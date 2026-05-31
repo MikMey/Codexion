@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 23:48:36 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/29 23:48:37 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/05/31 21:22:59 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,40 @@ typedef struct s_w_threads
 	t_dongle	**dongles;
 	t_heap		*heap;
 	t_log		*log;
-	int			*data;
+	size_t		*data;
 }				t_w_threads;
 
 typedef struct s_w_monitor
 {
 	t_coder		**coders;
 	t_log		*log;
-	int			*data;
-}	t_w_monitor
+	size_t		*data;
+}				t_w_monitor;
+
+typedef struct s_w_main
+{
+	t_coder		**coders;
+	t_heap		*heap;
+	t_log		*log;
+	size_t		*data;
+}				t_w_main;
+
+typedef struct s_configs
+{
+	pthread_t	*threads;
+	t_coder		**coders;
+	t_dongle	**dongles;
+	t_heap		*heap;
+	t_log		*log;
+	size_t		*data;
+	t_w_main	*w_main;
+	t_w_threads	**w_threads;
+	t_w_monitor	*w_monitor;
+}				t_configs;
+
+void			w_thread_create(t_configs *configs, int i);
+t_w_monitor		*w_monitor_create(t_coder **coders, t_log *log, size_t *data);
+t_w_main		*w_main_create(t_coder **coders, t_heap *heap, t_log *log,
+					size_t *data);
 
 #endif

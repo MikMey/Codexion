@@ -6,24 +6,28 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 00:01:22 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/30 00:24:34 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/05/31 21:26:37 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "threads.h"
 
-void	coders(t_w_threads *w_threads)
+void	*coders(void *parse)
 {
-	int	times_compiled;
-	int	time;
+	size_t		times_compiled;
+	size_t		time;
+	t_w_threads	*w_threads;
 
+	w_threads = (t_w_threads *)parse;
 	times_compiled = 0;
 	while (times_compiled != w_threads->data[REQUIRED])
 	{
 		if (w_threads->data[SCHEDULER] == FIFO)
-			w_threads->heap = heap_insert(w_threads->heap, gettimeofday(NULL, NULL), w_threads->coder->wake);
+			w_threads->heap = heap_insert(w_threads->heap, gettimems(),
+					w_threads->coder->wake);
 		else
-			w_threads->heap = heap_insert(w_threads->heap, w_threads->coder->compile_start, w_threads->coder->wake);
+			w_threads->heap = heap_insert(w_threads->heap,
+					w_threads->coder->compile_start, w_threads->coder->wake);
 		pthread_mutex_lock(&w_threads->coder->lock);
 		w_threads->coder->times_compiled = times_compiled;
 		w_threads->coder->state = C_WAIT;
@@ -33,12 +37,12 @@ void	coders(t_w_threads *w_threads)
 		pthread_mutex_unlock(&w_threads->coder->lock);
 		while (1)
 		{
-			time = gettimeofday(NULL, NULL);
+			time = gettimems();
 			if (time >= w_threads->dongles[0]->eoc
 				&& time >= w_threads->dongles[1]->eoc)
 				break ;
 		}
-		if (log_print(w_threads->log, time, w_threads->coder->idx, M_TAKEN,
+		if (log_print(w_threads->log, time, w_threads->coder->idx, M_TAKEN, 0,
 				0) == 2)
 			break ;
 		if (compile(w_threads->coder, w_threads->dongles, w_threads->log,
@@ -50,8 +54,9 @@ void	coders(t_w_threads *w_threads)
 				w_threads->coder->idx, M_DEBUG) == 2)
 			break ;
 		if (wait_log(w_threads->log, w_threads->data[REFRACTOR],
-				w_threads->coder->idx, REFRACTOR) == 2)
+				w_threads->coder->idx, M_REFRACTOR) == 2)
 			break ;
 		times_compiled++;
 	}
+	return (NULL);
 }

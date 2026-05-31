@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 13:03:24 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/27 21:37:26 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/05/31 21:30:10 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,21 @@
 
 int	main(int argc, char **argv)
 {
-	t_dict	*config;
-	char	*keys[] = (char *[]){CODERS, BURNOUT, COMPILE, DEBUG, REFRACTOR,
-			REQUIRED, COOLDOWN, SCHEDULER, NULL};
+	size_t		*data;
+	t_configs	*config;
+	pthread_t	thread_monitor;
+	size_t		i;
 
-	if (!(init_manager(&config, argc, argv)))
+	i = 0;
+	check_args(argc, argv);
+	data = get_data(argc, argv);
+	config = init(data);
+	while (i < config->data[CODERS])
 	{
-		printf("fu\n");
-		return (0);
+		pthread_create(&config->threads[i], NULL, coders,
+			&config->w_threads[i]);
+		i++;
 	}
-	for (int i = 0; keys[i]; i++)
-	{
-		printf("%s\n", keys[i]);
-	}
+	pthread_create(&thread_monitor, NULL, monitor, &config->w_monitor);
+	heap_manager(config->w_main);
 }

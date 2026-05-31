@@ -1,46 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   queue_ops.c                                        :+:      :+:    :+:   */
+/*   heap_ops.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 19:10:14 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/29 15:13:40 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/05/31 21:24:47 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "heap.h"
 
-t_heap	*heap_insert(t_heap *heap, int time, pthread_cond_t wake)
+t_heap	*heap_insert(t_heap *heap, size_t time, pthread_cond_t wake)
 {
-	int i;
-	int temp_time;
-	pthread_cond_t temp_wait;
-// TODO i need idx of coder
+	int				i;
+	int				temp_time;
+	pthread_cond_t	temp_wake;
+
+	// TODO i need idx of coder
 	i = 0;
-	if (!heap || !new_node)
-		return(heap);
+	if (!heap)
+		return (heap);
 	pthread_mutex_lock(&heap->lock);
-	while (heap->node[i])
+	while (heap->nodes[i])
 		i++;
-	heap->node[i]->wake = wake;
-	heap->node[i]->time = time;
+	heap->nodes[i]->wake = wake;
+	heap->nodes[i]->time = time;
 	while (i > 0)
 	{
-		if (heap->node[(i - 1) / 2]->time > heap->node[i]->time)
+		if (heap->nodes[(i - 1) / 2]->time > heap->nodes[i]->time)
 		{
-			temp_time = heap->node[i]->time;
-			temp_heap = heap->node[i]->wake;
-			heap->node[i]->time = heap->node[(i - 1) / 2]->time;
-			heap->node[i]->wake = heap->node[(i - 1) / 2]->wake;
-			heap->node[(i - 1) / 2]->time = temp_time;
-			heap->node[(i - 1) / 2]->wake = temp_heap;
+			temp_time = heap->nodes[i]->time;
+			temp_wake = heap->nodes[i]->wake;
+			heap->nodes[i]->time = heap->nodes[(i - 1) / 2]->time;
+			heap->nodes[i]->wake = heap->nodes[(i - 1) / 2]->wake;
+			heap->nodes[(i - 1) / 2]->time = temp_time;
+			heap->nodes[(i - 1) / 2]->wake = temp_wake;
 			i = (i - 1) / 2;
 		}
 		else
-			break;
+			break ;
 	}
 	pthread_mutex_unlock(&heap->lock);
-	return(heap);
+	return (heap);
 }

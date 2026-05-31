@@ -6,13 +6,13 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 17:12:47 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/29 16:32:58 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/05/30 17:40:38 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "coder.h"
 
-t_coder	*coder_create(size_t idx, t_dongle *dongles)
+t_coder	*coder_create(size_t idx)
 {
 	t_coder	*coder;
 

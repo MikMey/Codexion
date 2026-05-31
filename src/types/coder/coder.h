@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 23:48:19 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/29 23:48:20 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/05/31 21:24:31 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ typedef struct s_coder
 }					t_coder;
 
 int					coder_free(t_coder *coder);
-t_coder				*coder_create(size_t idx, t_dongle *dongles);
+t_coder				*coder_create(size_t idx);
 
 #endif

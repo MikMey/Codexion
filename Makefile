@@ -16,7 +16,7 @@ re:	fclean all
 
 test: 
 	clear
-	$(CC) *.c */*.c */*/*.c -o $(NAME)
+	$(CC) *.c */*.c */*/*.c */*/*/*.c -o $(NAME)
 
 format:
 	PATH="$$HOME/.local/bin:$$PATH" find . -type f -name "*.[c-h]" ! -name "test.*" -exec c_formatter_42 {} \;	
