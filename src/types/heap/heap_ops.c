@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 19:10:14 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/31 21:24:47 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/05/31 22:02:35 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,15 @@ t_heap	*heap_insert(t_heap *heap, size_t time, pthread_cond_t wake)
 	}
 	pthread_mutex_unlock(&heap->lock);
 	return (heap);
+}
+
+t_heap	*heap_pop_idx(t_heap *heap, int idx)
+{
+	heap->nodes[idx]->time = -1;
+	heap->nodes
+}
+
+t_heap	*heap_sort(t_heap *heap)
+{
+	
 }

@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 23:48:36 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/31 21:22:59 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/05/31 21:52:46 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ typedef struct s_configs
 }				t_configs;
 
 void			w_thread_create(t_configs *configs, int i);
-t_w_monitor		*w_monitor_create(t_coder **coders, t_log *log, size_t *data);
-t_w_main		*w_main_create(t_coder **coders, t_heap *heap, t_log *log,
-					size_t *data);
+void			w_monitor_create(t_configs *config);
+void			w_main_create(t_configs *config);
 
 #endif

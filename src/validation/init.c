@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 14:09:57 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/31 21:23:08 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/05/31 21:51:50 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,8 @@ t_configs	*init(size_t *data)
 	config->log = log_create();
 	arr_coders_create(config);
 	arr_dongles_create(config);
-	config->w_main = w_main_create(config->coders, config->heap, config->log,
-			config->data);
-	config->w_monitor = w_monitor_create(config->coders, config->log,
-			config->data);
+	w_main_create(config);
+	w_monitor_create(config);
 	config->w_threads = malloc(sizeof(t_w_threads *) * data[CODERS] + 1);
 	arr_threads_create(config);
 	return (config);

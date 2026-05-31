@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 23:48:55 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/31 21:24:37 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/05/31 21:57:10 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 typedef struct s_node_heap
 {
 	pthread_cond_t	wake;
-	int				time;
+	size_t				time;
 	int				idx;
 }					t_node_heap;
 
@@ -33,5 +33,7 @@ t_heap				*heap_create(int size);
 int					heap_free(t_heap *heap);
 t_heap				*heap_insert(t_heap *heap, size_t time,
 						pthread_cond_t wake);
+t_heap				*heap_pop_idx(t_heap *heap, int idx);
+t_heap				*heap_sort(t_heap *heap);
 
 #endif

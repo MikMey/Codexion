@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 15:29:50 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/31 20:38:19 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/05/31 21:56:08 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,22 @@ int	w_thread_free(t_w_threads *w_thread)
 		return (0);
 	free(w_thread);
 	return (1);
+}
+
+
+void	w_monitor_create(t_configs *config)
+{
+	config->w_monitor = malloc(sizeof(t_w_monitor));
+	config->w_monitor->coders = config->coders;
+	config->w_monitor->data = config->data;
+	config->w_monitor->log = config->log;
+}
+
+void	w_main_create(t_configs *config)
+{
+	config->w_main = malloc(sizeof(t_w_main));
+	config->w_main->coders = config->coders;
+	config->w_main->data = config->data;
+	config->w_main->heap = config->heap;
+	config->w_main->log = config->log;
 }
