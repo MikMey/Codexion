@@ -6,23 +6,23 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 12:48:41 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/30 13:48:44 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/04 23:54:40 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-static void	invert(long nn, int i, char *str);
-static int	check_size(long nn);
+static void	invert(int64_t nn, int i, char *str);
+static int	check_size(int64_t nn);
 
-char	*ft_itoa(int n)
+char	*ft_itoa(int64_t n)
 {
 	char	*str;
 	int		i;
-	long	nn;
+	int64_t	nn;
 	int		temp;
 
-	nn = (long)n;
+	nn = n;
 	i = 0;
 	temp = 0;
 	if (nn < 0)
@@ -41,14 +41,14 @@ char	*ft_itoa(int n)
 	return (str);
 }
 
-static void	invert(long nn, int i, char *str)
+static void	invert(int64_t nn, int i, char *str)
 {
 	if ((nn / 10) != 0)
 		invert(nn / 10, i - 1, str);
 	str[i] = (nn % 10) + '0';
 }
 
-static int	check_size(long nn)
+static int	check_size(int64_t nn)
 {
 	int	i;
 

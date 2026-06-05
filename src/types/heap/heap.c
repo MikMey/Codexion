@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 18:55:34 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/29 16:38:16 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/04 22:49:46 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ t_heap	*heap_create(int size)
 	heap->nodes[size] = NULL;
 	while (size > 0)
 	{
-		heap->nodes[size - 1] = malloc(sizeof(t_node_heap));
+		heap->nodes[size - 1] = NULL;
 		size--;
 	}
-	return (0);
+	return (heap);
 }
 
 int	heap_free(t_heap *heap)
@@ -48,4 +48,15 @@ int	heap_free(t_heap *heap)
 	free(heap->nodes);
 	free(heap);
 	return (0);
+}
+
+t_node_heap	*node_create(int idx, pthread_cond_t wake, size_t time)
+{
+	t_node_heap *node;
+
+	node = malloc(sizeof(t_node_heap));
+	node->idx = idx;
+	node->time = time;
+	node->wake = wake;
+	return(node);
 }

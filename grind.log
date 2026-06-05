@@ -1,54 +1,45 @@
-==1488840== Memcheck, a memory error detector
-==1488840== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==1488840== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==1488840== Command: ./a.out 1 1 1 1 1 1 1 fifo
-==1488840== Parent PID: 1468029
-==1488840== 
-==1488840== Invalid write of size 8
-==1488840==    at 0x401627: init_dict (dict.c:50)
-==1488840==    by 0x401803: assign_args (manager.c:37)
-==1488840==    by 0x401799: init_manager (manager.c:26)
-==1488840==    by 0x4011CD: main (codexion.c:22)
-==1488840==  Address 0x9 is not stack'd, malloc'd or (recently) free'd
-==1488840== 
-==1488840== 
-==1488840== Process terminating with default action of signal 11 (SIGSEGV)
-==1488840==  Access not within mapped region at address 0x9
-==1488840==    at 0x401627: init_dict (dict.c:50)
-==1488840==    by 0x401803: assign_args (manager.c:37)
-==1488840==    by 0x401799: init_manager (manager.c:26)
-==1488840==    by 0x4011CD: main (codexion.c:22)
-==1488840==  If you believe this happened as a result of a stack
-==1488840==  overflow in your program's main thread (unlikely but
-==1488840==  possible), you can try to increase the size of the
-==1488840==  main thread stack using the --main-stacksize= flag.
-==1488840==  The main thread stack size used in this run was 8388608.
-==1488840== 
-==1488840== HEAP SUMMARY:
-==1488840==     in use at exit: 1,344 bytes in 7 blocks
-==1488840==   total heap usage: 7 allocs, 0 frees, 1,344 bytes allocated
-==1488840== 
-==1488840== 72 bytes in 1 blocks are definitely lost in loss record 2 of 5
-==1488840==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==1488840==    by 0x40175F: init_manager (manager.c:20)
-==1488840==    by 0x4011CD: main (codexion.c:22)
-==1488840== 
-==1488840== 240 bytes in 1 blocks are definitely lost in loss record 3 of 5
-==1488840==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==1488840==    by 0x401265: ft_calloc (ft_calloc.c:21)
-==1488840==    by 0x401617: init_dict (dict.c:50)
-==1488840==    by 0x401803: assign_args (manager.c:37)
-==1488840==    by 0x401799: init_manager (manager.c:26)
-==1488840==    by 0x4011CD: main (codexion.c:22)
-==1488840== 
-==1488840== LEAK SUMMARY:
-==1488840==    definitely lost: 312 bytes in 2 blocks
-==1488840==    indirectly lost: 0 bytes in 0 blocks
-==1488840==      possibly lost: 0 bytes in 0 blocks
-==1488840==    still reachable: 1,032 bytes in 5 blocks
-==1488840==         suppressed: 0 bytes in 0 blocks
-==1488840== Reachable blocks (those to which a pointer was found) are not shown.
-==1488840== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==1488840== 
-==1488840== For lists of detected and suppressed errors, rerun with: -s
-==1488840== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
+==108908== Memcheck, a memory error detector
+==108908== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==108908== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==108908== Command: ./codexion 5 5000 100 100 100 5 150 fifo
+==108908== Parent PID: 108865
+==108908== 
+==108908== 
+==108908== Process terminating with default action of signal 2 (SIGINT)
+==108908==    at 0x4010C0: ??? (in /home/mimeyer/Desktop/Codexion/codexion)
+==108908==    by 0x401E1D: heap_manager (main.c:22)
+==108908==    by 0x4012FD: main (codexion.c:38)
+==108908== 
+==108908== HEAP SUMMARY:
+==108908==     in use at exit: 4,225 bytes in 43 blocks
+==108908==   total heap usage: 43 allocs, 0 frees, 4,225 bytes allocated
+==108908== 
+==108908== 272 bytes in 1 blocks are possibly lost in loss record 14 of 19
+==108908==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==108908==    by 0x40147D9: calloc (rtld-malloc.h:44)
+==108908==    by 0x40147D9: allocate_dtv (dl-tls.c:375)
+==108908==    by 0x40147D9: _dl_allocate_tls (dl-tls.c:634)
+==108908==    by 0x490A7B4: allocate_stack (allocatestack.c:430)
+==108908==    by 0x490A7B4: pthread_create@@GLIBC_2.34 (pthread_create.c:647)
+==108908==    by 0x4012F0: main (codexion.c:37)
+==108908== 
+==108908== 1,360 bytes in 5 blocks are possibly lost in loss record 19 of 19
+==108908==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==108908==    by 0x40147D9: calloc (rtld-malloc.h:44)
+==108908==    by 0x40147D9: allocate_dtv (dl-tls.c:375)
+==108908==    by 0x40147D9: _dl_allocate_tls (dl-tls.c:634)
+==108908==    by 0x490A7B4: allocate_stack (allocatestack.c:430)
+==108908==    by 0x490A7B4: pthread_create@@GLIBC_2.34 (pthread_create.c:647)
+==108908==    by 0x4012C0: main (codexion.c:34)
+==108908== 
+==108908== LEAK SUMMARY:
+==108908==    definitely lost: 0 bytes in 0 blocks
+==108908==    indirectly lost: 0 bytes in 0 blocks
+==108908==      possibly lost: 1,632 bytes in 6 blocks
+==108908==    still reachable: 2,593 bytes in 37 blocks
+==108908==         suppressed: 0 bytes in 0 blocks
+==108908== Reachable blocks (those to which a pointer was found) are not shown.
+==108908== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==108908== 
+==108908== For lists of detected and suppressed errors, rerun with: -s
+==108908== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)

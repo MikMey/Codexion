@@ -1,5 +1,6 @@
-CC := cc -Wall -Wextra -Werror -pthread -g
-NAME := codexion
+VAL := valgrind --leak-check=full --log-file=grind.log
+CC := cc -Wall -Wextra -Werror -pthread -g -O0
+NAME := codexion -fsanitize=thread
 SRC := ./codexion.c \
 ./utils/ft_calloc.c \
 ./utils/ft_strlcpy.c \
@@ -24,7 +25,6 @@ SRC := ./codexion.c \
 ./src/threads/main.c \
 ./src/threads/monitor.c
 
-
 $(NAME):
 	$(CC) $(SRC) -o $(NAME)
 
@@ -41,6 +41,11 @@ re:	fclean all
 test: 
 	clear
 	$(CC) *.c */*.c */*/*.c */*/*/*.c -o $(NAME)
+
+run:
+	$(VAL) ./$(NAME) 5 5000 100 100 100 5 150 fifo
+
+full: test run
 
 srcs:
 	find . -type f -name "*.c" > res.txt

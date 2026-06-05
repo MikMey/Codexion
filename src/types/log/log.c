@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 15:13:45 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/31 21:17:12 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/05 21:15:54 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_log	*log_create(void)
 	return (log);
 }
 
-int	log_print(t_log *log, int time, int idx, char *arg, int death, int finished)
+int	log_print(t_log *log, uint64_t time, int idx, char *arg, int death, int finished)
 {
 	if (!arg)
 		return (1);

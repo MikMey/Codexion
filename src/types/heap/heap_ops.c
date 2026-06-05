@@ -6,37 +6,29 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 19:10:14 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/31 22:02:35 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/04 22:31:45 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "heap.h"
 
-t_heap	*heap_insert(t_heap *heap, size_t time, pthread_cond_t wake)
+t_heap	*heap_insert(t_heap *heap, t_node_heap *node, size_t time)
 {
-	int				i;
-	int				temp_time;
-	pthread_cond_t	temp_wake;
+	int	i;
 
-	// TODO i need idx of coder
 	i = 0;
 	if (!heap)
 		return (heap);
 	pthread_mutex_lock(&heap->lock);
+	node->time = time;
 	while (heap->nodes[i])
 		i++;
-	heap->nodes[i]->wake = wake;
-	heap->nodes[i]->time = time;
+	heap->nodes[i] = node;
 	while (i > 0)
 	{
 		if (heap->nodes[(i - 1) / 2]->time > heap->nodes[i]->time)
 		{
-			temp_time = heap->nodes[i]->time;
-			temp_wake = heap->nodes[i]->wake;
-			heap->nodes[i]->time = heap->nodes[(i - 1) / 2]->time;
-			heap->nodes[i]->wake = heap->nodes[(i - 1) / 2]->wake;
-			heap->nodes[(i - 1) / 2]->time = temp_time;
-			heap->nodes[(i - 1) / 2]->wake = temp_wake;
+			heap_swap(heap, i, (i - 1) / 2);
 			i = (i - 1) / 2;
 		}
 		else
@@ -46,13 +38,58 @@ t_heap	*heap_insert(t_heap *heap, size_t time, pthread_cond_t wake)
 	return (heap);
 }
 
-t_heap	*heap_pop_idx(t_heap *heap, int idx)
+void	heap_swap(t_heap *heap, int x, int y)
 {
-	heap->nodes[idx]->time = -1;
-	heap->nodes
+	t_node_heap	*temp_node;
+
+	temp_node = heap->nodes[x];
+	heap->nodes[x] = heap->nodes[y];
+	heap->nodes[y] = temp_node;
 }
 
-t_heap	*heap_sort(t_heap *heap)
+void	heap_pop_idx(t_heap *heap, int idx)
 {
-	
+	int	size;
+	int	i;
+
+	i = 0;
+	size = 0;
+	if (!heap->nodes[0])
+		return ;
+	while (heap->nodes[size])
+	{
+		if (heap->nodes[size]->idx == idx)
+			i = size;
+		size++;
+	}
+	heap_swap(heap, size - 1, idx);
+	heap->nodes[size - 1] = NULL;
+	heap_sort(heap, idx);
+	return ;
+}
+
+void	heap_sort(t_heap *heap, int i)
+{
+	int	left_child;
+	int	right_child;
+	int	size;
+	int	smallest;
+
+	size = 0;
+	left_child = 2 * i + 1;
+	right_child = 2 * i + 2;
+	while (heap->nodes[size])
+		size++;
+	smallest = i;
+	if (left_child < size
+		&& heap->nodes[left_child]->time < heap->nodes[i]->time)
+		smallest = left_child;
+	if (right_child < size
+		&& heap->nodes[right_child]->time < heap->nodes[i]->time)
+		smallest = right_child;
+	if (smallest != i)
+	{
+		heap_swap(heap, smallest, i);
+		heap_sort(heap, smallest);
+	}
 }

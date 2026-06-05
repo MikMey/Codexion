@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 23:48:45 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/31 21:29:13 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/04 23:49:09 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@
 # include <pthread.h>
 # include <stdbool.h>
 # include <stdlib.h>
+#include "../../tools.h"
 
 typedef struct s_dongle
 {
 	size_t			idx;
-	size_t			eoc;
+	uint64_t			eoc;
 	pthread_mutex_t	lock;
 }					t_dongle;
 

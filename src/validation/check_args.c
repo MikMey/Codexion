@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 14:15:21 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/31 21:32:55 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/04 22:30:52 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ size_t	*get_data(int argc, char **argv)
 	size_t	i;
 	size_t	*data;
 
-	i = 1;
-	data = ft_calloc(sizeof(int), DATA + 1);
+	i = 0;
+	data = ft_calloc(sizeof(size_t), DATA + 1);
 	if (!data)
 		return (NULL);
-	while (i <= 8)
+	while (i < 7)
 	{
-		data[i - 1] = atoi(argv[i]);
-		if (data[i - 1] > MAX)
+		data[i] = (size_t)atoi(argv[i + 1]);
+		if (data[i] > MAX)
 		{
 			free(data);
 			return (NULL);

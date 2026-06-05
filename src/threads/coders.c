@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 00:01:22 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/31 21:26:37 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/04 23:50:03 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*coders(void *parse)
 {
 	size_t		times_compiled;
-	size_t		time;
+	uint64_t		time;
 	t_w_threads	*w_threads;
 
 	w_threads = (t_w_threads *)parse;
@@ -23,11 +23,11 @@ void	*coders(void *parse)
 	while (times_compiled != w_threads->data[REQUIRED])
 	{
 		if (w_threads->data[SCHEDULER] == FIFO)
-			w_threads->heap = heap_insert(w_threads->heap, gettimems(),
-					w_threads->coder->wake);
+			w_threads->heap = heap_insert(w_threads->heap, w_threads->node,
+					gettimems());
 		else
-			w_threads->heap = heap_insert(w_threads->heap,
-					w_threads->coder->compile_start, w_threads->coder->wake);
+			w_threads->heap = heap_insert(w_threads->heap, w_threads->node,
+					w_threads->coder->compile_start);
 		pthread_mutex_lock(&w_threads->coder->lock);
 		w_threads->coder->times_compiled = times_compiled;
 		w_threads->coder->state = C_WAIT;

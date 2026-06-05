@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 23:48:19 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/31 21:24:31 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/04 23:46:49 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 typedef struct s_coder
 {
 	size_t			idx;
-	size_t			compile_start;
+	uint64_t			compile_start;
 	int				state;
 	size_t			times_compiled;
 	pthread_mutex_t	lock;

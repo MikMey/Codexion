@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 00:01:18 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/31 21:23:42 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/05 21:11:59 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	*monitor(void *parse)
 	finished = ft_calloc(sizeof(int), w_monitor->data[CODERS] + 1);
 	while (!death)
 	{
+		i = w_monitor->data[CODERS] % (i + 1);
 		if (finished[i])
 		{
 			i++;
@@ -35,7 +36,7 @@ void	*monitor(void *parse)
 		if (w_monitor->coders[i]->times_compiled >= w_monitor->data[REQUIRED])
 			finished[i] = 1;
 		else if ((w_monitor->coders[i]->compile_start
-				+ w_monitor->data[BURNOUT]) > gettimems())
+				+ (uint64_t)w_monitor->data[BURNOUT]) > gettimems())
 			death = 1;
 		pthread_mutex_unlock(&w_monitor->coders[i]->lock);
 		done = 0;
@@ -43,10 +44,9 @@ void	*monitor(void *parse)
 			done++;
 		if (done >= w_monitor->data[CODERS])
 			break ;
-		i = w_monitor->data[CODERS] % (i + 1);
 	}
 	if (death)
-		log_print(w_monitor->log, gettimems(), i - 1, M_BURNOUT, death, 0);
+		log_print(w_monitor->log, gettimems(), i, M_BURNOUT, death, 0);
 	free(finished);
 	return (NULL);
 }

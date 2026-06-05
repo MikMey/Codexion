@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 11:21:49 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/31 21:23:20 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/04 22:59:02 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ t_configs	*init(size_t *data);
 void		arr_coders_create(t_configs *config);
 void		arr_dongles_create(t_configs *config);
 void		arr_threads_create(t_configs *config);
+void	arr_nodes_create(t_configs *config);
 
 #endif

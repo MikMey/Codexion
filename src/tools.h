@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 11:21:57 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/30 14:26:22 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/04 23:45:31 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@
 # include <string.h>
 # include <sys/time.h>
 # include <unistd.h>
+# include <stdint.h>
 
 # define DATA 8
 # define MAX 9999
+# define DELAY 10
 
 # define CODERS 0
 # define BURNOUT 1
