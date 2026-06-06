@@ -26,7 +26,7 @@ int	compile(t_coder *coder, t_dongle **dongles, t_log *log, size_t *data)
 	pthread_mutex_unlock(&coder->lock);
 	dongles[0]->eoc = start + data[COMPILE] + data[COOLDOWN];
 	dongles[1]->eoc = start + data[COMPILE] + data[COOLDOWN];
-	if (data[COMPILE] < 0 || data[COMPILE] > 99999)
+	if (data[COMPILE] > 99999)
 		return (1);
 	while (1)
 	{
@@ -43,7 +43,7 @@ int	wait_log(t_log *log, size_t time_to_pass, int idx, char *arg)
 	start = gettimems();
 	if (log_print(log, start, idx, arg, 0, 0) == 2)
 		return (1);
-	if (time_to_pass < 0 || time_to_pass > 99999)
+	if (time_to_pass > 99999)
 		return (1);
 	while (1)
 	{

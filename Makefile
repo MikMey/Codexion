@@ -1,6 +1,6 @@
 VAL := valgrind --leak-check=full --log-file=grind.log
-CC := cc -Wall -Wextra -Werror -pthread -g -O0
-NAME := codexion -fsanitize=thread
+CC := cc -pthread -g -O0
+NAME := codexion
 SRC := ./codexion.c \
 ./utils/ft_calloc.c \
 ./utils/ft_strlcpy.c \
@@ -42,8 +42,12 @@ test:
 	clear
 	$(CC) *.c */*.c */*/*.c */*/*/*.c -o $(NAME)
 
-run:
+
+grind:
 	$(VAL) ./$(NAME) 5 5000 100 100 100 5 150 fifo
+
+run:
+	./$(NAME) 5 5000 100 100 100 5 150 fifo
 
 full: test run
 

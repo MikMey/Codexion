@@ -36,7 +36,7 @@ void	*monitor(void *parse)
 		if (w_monitor->coders[i]->times_compiled >= w_monitor->data[REQUIRED])
 			finished[i] = 1;
 		else if ((w_monitor->coders[i]->compile_start
-				+ (uint64_t)w_monitor->data[BURNOUT]) > gettimems())
+				+ (uint64_t)w_monitor->data[BURNOUT]) < gettimems())
 			death = 1;
 		pthread_mutex_unlock(&w_monitor->coders[i]->lock);
 		done = 0;

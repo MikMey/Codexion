@@ -18,9 +18,9 @@ int	main(int argc, char **argv)
 	size_t		*data;
 	t_configs	*config;
 	pthread_t	thread_monitor;
-	size_t		i;
+	// size_t		i;
 
-	i = 0;
+	// i = 0;
 	check_args(argc, argv);
 	data = get_data(argc, argv);
 	config = init(data);

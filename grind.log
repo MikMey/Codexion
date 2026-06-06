@@ -1,45 +1,49 @@
-==108908== Memcheck, a memory error detector
-==108908== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==108908== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==108908== Command: ./codexion 5 5000 100 100 100 5 150 fifo
-==108908== Parent PID: 108865
-==108908== 
-==108908== 
-==108908== Process terminating with default action of signal 2 (SIGINT)
-==108908==    at 0x4010C0: ??? (in /home/mimeyer/Desktop/Codexion/codexion)
-==108908==    by 0x401E1D: heap_manager (main.c:22)
-==108908==    by 0x4012FD: main (codexion.c:38)
-==108908== 
-==108908== HEAP SUMMARY:
-==108908==     in use at exit: 4,225 bytes in 43 blocks
-==108908==   total heap usage: 43 allocs, 0 frees, 4,225 bytes allocated
-==108908== 
-==108908== 272 bytes in 1 blocks are possibly lost in loss record 14 of 19
-==108908==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==108908==    by 0x40147D9: calloc (rtld-malloc.h:44)
-==108908==    by 0x40147D9: allocate_dtv (dl-tls.c:375)
-==108908==    by 0x40147D9: _dl_allocate_tls (dl-tls.c:634)
-==108908==    by 0x490A7B4: allocate_stack (allocatestack.c:430)
-==108908==    by 0x490A7B4: pthread_create@@GLIBC_2.34 (pthread_create.c:647)
-==108908==    by 0x4012F0: main (codexion.c:37)
-==108908== 
-==108908== 1,360 bytes in 5 blocks are possibly lost in loss record 19 of 19
-==108908==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==108908==    by 0x40147D9: calloc (rtld-malloc.h:44)
-==108908==    by 0x40147D9: allocate_dtv (dl-tls.c:375)
-==108908==    by 0x40147D9: _dl_allocate_tls (dl-tls.c:634)
-==108908==    by 0x490A7B4: allocate_stack (allocatestack.c:430)
-==108908==    by 0x490A7B4: pthread_create@@GLIBC_2.34 (pthread_create.c:647)
-==108908==    by 0x4012C0: main (codexion.c:34)
-==108908== 
-==108908== LEAK SUMMARY:
-==108908==    definitely lost: 0 bytes in 0 blocks
-==108908==    indirectly lost: 0 bytes in 0 blocks
-==108908==      possibly lost: 1,632 bytes in 6 blocks
-==108908==    still reachable: 2,593 bytes in 37 blocks
-==108908==         suppressed: 0 bytes in 0 blocks
-==108908== Reachable blocks (those to which a pointer was found) are not shown.
-==108908== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==108908== 
-==108908== For lists of detected and suppressed errors, rerun with: -s
-==108908== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==14023== Memcheck, a memory error detector
+==14023== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==14023== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info
+==14023== Command: ./codexion 5 5000 100 100 100 5 150 fifo
+==14023== Parent PID: 14022
+==14023== 
+==14023== 
+==14023== Process terminating with default action of signal 2 (SIGINT)
+==14023==    at 0x4912C00: futex_wait (futex-internal.h:126)
+==14023==    by 0x4912C00: __lll_lock_wait (lowlevellock.c:49)
+==14023==    by 0x4919A33: lll_mutex_lock_optimized (pthread_mutex_lock.c:48)
+==14023==    by 0x4919A33: pthread_mutex_lock@@GLIBC_2.2.5 (pthread_mutex_lock.c:87)
+==14023==    by 0x4001D3B: coders (coders.c:35)
+==14023==    by 0x49160D9: start_thread (pthread_create.c:454)
+==14023==    by 0x49A95B3: clone (clone.S:100)
+==14023== 
+==14023== HEAP SUMMARY:
+==14023==     in use at exit: 4,263 bytes in 45 blocks
+==14023==   total heap usage: 45 allocs, 0 frees, 4,263 bytes allocated
+==14023== 
+==14023== 272 bytes in 1 blocks are possibly lost in loss record 16 of 21
+==14023==    at 0x4859E43: calloc (vg_replace_malloc.c:1678)
+==14023==    by 0x401D506: calloc (rtld-malloc.h:44)
+==14023==    by 0x401D506: allocate_dtv (dl-tls.c:470)
+==14023==    by 0x401D506: _dl_allocate_tls (dl-tls.c:722)
+==14023==    by 0x4916F61: allocate_stack (allocatestack.c:568)
+==14023==    by 0x4916F61: pthread_create@@GLIBC_2.34 (pthread_create.c:680)
+==14023==    by 0x40014B9: main (codexion.c:42)
+==14023== 
+==14023== 1,360 bytes in 5 blocks are possibly lost in loss record 21 of 21
+==14023==    at 0x4859E43: calloc (vg_replace_malloc.c:1678)
+==14023==    by 0x401D506: calloc (rtld-malloc.h:44)
+==14023==    by 0x401D506: allocate_dtv (dl-tls.c:470)
+==14023==    by 0x401D506: _dl_allocate_tls (dl-tls.c:722)
+==14023==    by 0x4916F61: allocate_stack (allocatestack.c:568)
+==14023==    by 0x4916F61: pthread_create@@GLIBC_2.34 (pthread_create.c:680)
+==14023==    by 0x400142D: main (codexion.c:35)
+==14023== 
+==14023== LEAK SUMMARY:
+==14023==    definitely lost: 0 bytes in 0 blocks
+==14023==    indirectly lost: 0 bytes in 0 blocks
+==14023==      possibly lost: 1,632 bytes in 6 blocks
+==14023==    still reachable: 2,631 bytes in 39 blocks
+==14023==         suppressed: 0 bytes in 0 blocks
+==14023== Reachable blocks (those to which a pointer was found) are not shown.
+==14023== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==14023== 
+==14023== For lists of detected and suppressed errors, rerun with: -s
+==14023== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
