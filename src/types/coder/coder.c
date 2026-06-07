@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 17:12:47 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/06/04 22:58:17 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/07 18:10:58 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_coder	*coder_create(size_t idx)
 	pthread_cond_init(&coder->wake, NULL);
 	coder->idx = idx;
 	coder->state = C_BUSY;
-	coder->compile_start = 0;
+	coder->compile_start = gettimems();
 	coder->times_compiled = 0;
 	return (coder);
 }

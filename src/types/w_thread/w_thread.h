@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 23:48:36 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/06/03 18:58:23 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/07 22:30:46 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_w_monitor
 typedef struct s_w_main
 {
 	t_coder		**coders;
+	t_dongle	**dongles;
 	t_heap		*heap;
 	t_log		*log;
 	size_t		*data;

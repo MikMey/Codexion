@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 23:48:45 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/06/04 23:49:09 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/08 00:26:06 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 typedef struct s_dongle
 {
 	size_t			idx;
-	uint64_t			eoc;
+	uint64_t		eoc;
 	pthread_mutex_t	lock;
 }					t_dongle;
 

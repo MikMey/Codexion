@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 15:29:50 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/06/04 22:58:43 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/07 22:34:37 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	w_main_create(t_configs *config)
 {
 	config->w_main = malloc(sizeof(t_w_main));
 	config->w_main->coders = config->coders;
+	config->w_main->dongles = config->dongles;
 	config->w_main->data = config->data;
 	config->w_main->heap = config->heap;
 	config->w_main->log = config->log;

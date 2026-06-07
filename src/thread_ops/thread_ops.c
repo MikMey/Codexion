@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 11:24:49 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/31 21:31:15 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/08 01:31:12 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	compile(t_coder *coder, t_dongle **dongles, t_log *log, size_t *data)
 		return (1);
 	pthread_mutex_lock(&coder->lock);
 	coder->compile_start = start;
-	coder->state = C_BUSY;
 	pthread_mutex_unlock(&coder->lock);
 	dongles[0]->eoc = start + data[COMPILE] + data[COOLDOWN];
 	dongles[1]->eoc = start + data[COMPILE] + data[COOLDOWN];
@@ -36,9 +35,9 @@ int	compile(t_coder *coder, t_dongle **dongles, t_log *log, size_t *data)
 	}
 }
 
-int	wait_log(t_log *log, size_t time_to_pass, int idx, char *arg)
+int	wait_log(t_log *log, uint64_t time_to_pass, int idx, char *arg)
 {
-	size_t	start;
+	uint64_t	start;
 
 	start = gettimems();
 	if (log_print(log, start, idx, arg, 0, 0) == 2)
@@ -49,6 +48,6 @@ int	wait_log(t_log *log, size_t time_to_pass, int idx, char *arg)
 	{
 		if (gettimems() >= (start + time_to_pass))
 			return (0);
-		usleep((time_to_pass * 1000) / 32);
 	}
 }
+	// usleep((time_to_pass * 1000) / 32);

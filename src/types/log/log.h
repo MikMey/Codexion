@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 23:48:40 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/06/04 23:49:54 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/08 00:54:56 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_log
 	pthread_mutex_t	lock;
 	int				coder_died;
 	int				finished;
-	int				start;
+	uint64_t		start;
 }					t_log;
 
 t_log				*log_create(void);

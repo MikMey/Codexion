@@ -25,6 +25,8 @@ SRC := ./codexion.c \
 ./src/threads/main.c \
 ./src/threads/monitor.c
 
+ARGS := 2 4100 200 5 5 5 200 edf
+
 $(NAME):
 	$(CC) $(SRC) -o $(NAME)
 
@@ -42,12 +44,11 @@ test:
 	clear
 	$(CC) *.c */*.c */*/*.c */*/*/*.c -o $(NAME)
 
-
 grind:
-	$(VAL) ./$(NAME) 5 5000 100 100 100 5 150 fifo
+	$(VAL) ./$(NAME) $(ARGS)
 
 run:
-	./$(NAME) 5 5000 100 100 100 5 150 fifo
+	./$(NAME) $(ARGS)
 
 full: test run
 

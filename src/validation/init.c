@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 14:09:57 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/06/04 23:07:16 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/08 00:24:20 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_configs	*init(size_t *data)
 	t_configs	*config;
 
 	config = malloc(sizeof(t_configs));
-	config->threads = malloc(sizeof(pthread_t) * data[CODERS] + 1);
+	config->threads = malloc(sizeof(pthread_t) * (data[CODERS] + 1));
 	config->coders = malloc(sizeof(t_coder *) * (data[CODERS] + 1));
 	config->dongles = malloc(sizeof(t_dongle *) * (data[CODERS] + 1));
 	config->nodes = malloc(sizeof(t_node_heap *) * (data[CODERS] + 1));

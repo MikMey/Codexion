@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 18:55:34 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/06/04 22:49:46 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/07 21:57:37 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	heap_free(t_heap *heap)
 	return (0);
 }
 
-t_node_heap	*node_create(int idx, pthread_cond_t wake, size_t time)
+t_node_heap	*node_create(int idx, pthread_cond_t wake, uint64_t time)
 {
 	t_node_heap *node;
 
