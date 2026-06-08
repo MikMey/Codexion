@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 14:15:21 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/06/08 22:00:25 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/08 22:54:27 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	check_args(int argc, char **argv)
 	i = 1;
 	if (argc != 9)
 		return (1);
-	while (i <= 8)
+	while (i <= 7)
 	{
-		if (!ft_isstr(argv[i], ft_isdigit))
+		if (ft_isstr(argv[i], ft_isdigit))
 			return (1);
 		i++;
 	}

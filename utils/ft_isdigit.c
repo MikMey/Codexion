@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 13:16:05 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/30 14:16:13 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/08 22:54:16 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_isstr(char *arg, int (*check)(int))
 	i = 0;
 	while (arg[i])
 	{
-		if (check(arg[i]))
+		if (!check(arg[i]))
 			return (1);
 		i++;
 	}
