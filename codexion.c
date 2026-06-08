@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 13:03:24 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/06/08 21:42:22 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/08 22:47:08 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	main(int argc, char **argv)
 	size_t		i;
 
 	i = 0;
-	check_args(argc, argv);
+	if(check_args(argc, argv))
+		return (1);
 	data = get_data(argc, argv);
 	if (!data)
 		return (1);

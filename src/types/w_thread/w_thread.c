@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 15:29:50 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/06/08 20:23:11 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/08 22:48:38 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	w_thread_create(t_configs *configs, int i)
 {
 	configs->w_threads[i] = malloc(sizeof(t_w_threads));
 	configs->w_threads[i]->coder = configs->coders[i];
-	configs->w_threads[i]->dongles = malloc(sizeof(t_dongle) * 2);
+	configs->w_threads[i]->dongles = malloc(sizeof(t_dongle *) * 2);
 	configs->w_threads[i]->dongles[0] = configs->dongles[i
 		% configs->data[CODERS]];
 	configs->w_threads[i]->dongles[1] = configs->dongles[(i + 1)
