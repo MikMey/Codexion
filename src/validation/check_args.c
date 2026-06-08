@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 14:15:21 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/06/08 01:47:20 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/08 22:00:25 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ size_t	*get_data(int argc, char **argv)
 	while (i < 7)
 	{
 		data[i] = (size_t)atoi(argv[i + 1]);
-		if (data[i] > MAX)
+		if (data[i] > MAX || (data[i] <= 1 && i == CODERS) || (data[i] == 0
+				&& i == REQUIRED))
 		{
 			free(data);
 			return (NULL);

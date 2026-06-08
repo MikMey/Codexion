@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 15:29:50 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/06/07 22:34:37 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/08 20:23:11 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,15 @@ void	w_thread_create(t_configs *configs, int i)
 	configs->w_threads[i]->node = configs->nodes[i];
 }
 
-int	w_thread_free(t_w_threads *w_thread)
+void	w_thread_free(void *parse)
 {
+	t_w_threads	*w_thread;
+
+	w_thread = (t_w_threads *)parse;
 	if (!w_thread)
-		return (0);
+		return ;
+	free(w_thread->dongles);
 	free(w_thread);
-	return (1);
 }
 
 void	w_monitor_create(t_configs *config)

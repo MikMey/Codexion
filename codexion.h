@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 11:21:53 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/05/29 13:29:44 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/08 20:22:28 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 # define CODEXION_H
 
 # include "src/src.h"
+
+int	finish(t_configs *config);
+int	arr_free(void **arr, void (*func)(void *));
 
 #endif

@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dongle.h                                           :+:      :+:    :+:   */
+/*   log_helper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/29 23:48:45 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/06/08 20:23:04 by mimeyer          ###   ########.fr       */
+/*   Created: 2026/06/08 22:05:27 by mimeyer           #+#    #+#             */
+/*   Updated: 2026/06/08 22:05:47 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DONGLE_H
-# define DONGLE_H
+#include "log.h"
 
-# include "../../tools.h"
-# include <pthread.h>
-# include <stdbool.h>
-# include <stdlib.h>
-
-typedef struct s_dongle
+void	log_death(t_log *log, int death)
 {
-	size_t			idx;
-	uint64_t		eoc;
-	pthread_mutex_t	lock;
-}					t_dongle;
+	pthread_mutex_lock(&log->lock);
+	if (death)
+		log->coder_died = 1;
+	pthread_mutex_unlock(&log->lock);
+}
 
-t_dongle			*dongle_create(size_t idx);
-void				dongle_free(void *parse);
-
-#endif
+void	log_finished(t_log *log, int finished)
+{
+	pthread_mutex_lock(&log->lock);
+	if (finished)
+		log->finished = 1;
+	pthread_mutex_unlock(&log->lock);
+}

@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 23:48:36 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/06/07 22:30:46 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/08 20:23:20 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ typedef struct s_configs
 void			w_thread_create(t_configs *configs, int i);
 void			w_monitor_create(t_configs *config);
 void			w_main_create(t_configs *config);
+void			w_thread_free(void *parse);
 
 #endif

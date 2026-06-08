@@ -6,12 +6,27 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/30 00:01:20 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/06/08 02:14:29 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/08 22:30:42 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../tools.h"
 #include "threads.h"
+
+static void	wake_all_coders(t_w_main *w_main)
+{
+	size_t	i;
+
+	i = 0;
+	usleep(1000);
+	while (w_main->coders[i])
+	{
+		pthread_mutex_lock(&w_main->coders[i]->lock);
+		pthread_cond_broadcast(&w_main->coders[i]->wake);
+		pthread_mutex_unlock(&w_main->coders[i]->lock);
+		i++;
+	}
+}
 
 void	heap_manager(t_w_main *w_main)
 {
@@ -29,6 +44,8 @@ void	heap_manager(t_w_main *w_main)
 			continue ;
 	}
 	pthread_mutex_unlock(&w_main->heap->lock);
+	wake_all_coders(w_main);
+	free(eoc);
 }
 
 int	heap_check(t_w_main *w_main, uint64_t *eoc)

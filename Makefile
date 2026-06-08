@@ -1,8 +1,7 @@
 VAL := valgrind --leak-check=full --log-file=grind.log
 CC := cc -Wall -Werror -Wextra -pthread -g
 NAME := codexion
-SRC := ./codexion.c \
-./utils/ft_calloc.c \
+SRC := ./utils/ft_calloc.c \
 ./utils/ft_strlcpy.c \
 ./utils/ft_strlen.c \
 ./utils/ft_memcpy.c \
@@ -21,11 +20,13 @@ SRC := ./codexion.c \
 ./src/types/heap/heap_ops.c \
 ./src/types/w_thread/w_thread.c \
 ./src/types/log/log.c \
+./src/types/log/log_helper.c \
 ./src/threads/coders.c \
 ./src/threads/main.c \
-./src/threads/monitor.c
+./src/threads/monitor.c \
+./codexion.c
 
-ARGS := 2 4100 200 5 5 5 200 edf
+ARGS := 0 0 0 0 0 0 0 edf
 
 $(NAME):
 	$(CC) $(SRC) -o $(NAME)
@@ -42,7 +43,7 @@ re:	fclean all
 
 test: 
 	clear
-	$(CC) *.c */*.c */*/*.c */*/*/*.c -o $(NAME)
+	$(CC) *.c */*.c */*/*.c */*/*/*.c -o $(NAME) -fsanitize=memory
 
 grind:
 	$(VAL) ./$(NAME) $(ARGS)

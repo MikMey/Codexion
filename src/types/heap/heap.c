@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 18:55:34 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/06/07 21:57:37 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/08 20:19:49 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,6 @@ int	heap_free(t_heap *heap)
 	if (!heap)
 		return (1);
 	pthread_mutex_destroy(&heap->lock);
-	while (heap->nodes && heap->nodes[i])
-	{
-		free(heap->nodes[i]);
-		i++;
-	}
 	free(heap->nodes);
 	free(heap);
 	return (0);

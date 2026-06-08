@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 11:21:57 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/06/08 00:34:55 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/08 21:47:55 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <unistd.h>
 
 # define DATA 8
-# define MAX 999999
+# define MAX 9999999
 # define DELAY 10
 
 # define CODERS 0

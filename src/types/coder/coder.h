@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 23:48:19 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/06/04 23:46:49 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/08 20:22:39 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_coder
 	pthread_cond_t	wake;
 }					t_coder;
 
-int					coder_free(t_coder *coder);
+void				coder_free(void *parse);
 t_coder				*coder_create(size_t idx);
 
 #endif
