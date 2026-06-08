@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	data = get_data(argc, argv);
 	config = init(data);
 	config->log->start = gettimems();
-	while(i < data[CODERS])
+	while (i < data[CODERS])
 	{
 		pthread_create(&config->threads[i], NULL, coders, config->w_threads[i]);
 		i++;

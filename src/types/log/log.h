@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 23:48:40 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/06/08 00:54:56 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/08 01:43:26 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ typedef struct s_log
 	uint64_t		start;
 }					t_log;
 
+void				log_death(t_log *log, int death);
+void				log_finished(t_log *log, int finished);
 t_log				*log_create(void);
-int					log_print(t_log *log, uint64_t time, int idx, char *arg,
-						int death, int finished);
+int					log_print(t_log *log, uint64_t time, int idx, char *arg);
 int					log_free(t_log *log);
 
 #endif

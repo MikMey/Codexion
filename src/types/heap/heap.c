@@ -52,11 +52,11 @@ int	heap_free(t_heap *heap)
 
 t_node_heap	*node_create(int idx, pthread_cond_t wake, uint64_t time)
 {
-	t_node_heap *node;
+	t_node_heap	*node;
 
 	node = malloc(sizeof(t_node_heap));
 	node->idx = idx;
 	node->time = time;
 	node->wake = wake;
-	return(node);
+	return (node);
 }

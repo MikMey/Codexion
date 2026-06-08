@@ -1,5 +1,5 @@
 VAL := valgrind --leak-check=full --log-file=grind.log
-CC := cc -pthread -g -O0
+CC := cc -Wall -Werror -Wextra -pthread -g
 NAME := codexion
 SRC := ./codexion.c \
 ./utils/ft_calloc.c \

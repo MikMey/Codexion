@@ -23,6 +23,6 @@ t_configs	*init(size_t *data);
 void		arr_coders_create(t_configs *config);
 void		arr_dongles_create(t_configs *config);
 void		arr_threads_create(t_configs *config);
-void	arr_nodes_create(t_configs *config);
+void		arr_nodes_create(t_configs *config);
 
 #endif

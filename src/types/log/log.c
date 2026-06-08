@@ -6,7 +6,7 @@
 /*   By: mimeyer <mimeyer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 15:13:45 by mimeyer           #+#    #+#             */
-/*   Updated: 2026/06/08 00:55:22 by mimeyer          ###   ########.fr       */
+/*   Updated: 2026/06/08 01:43:08 by mimeyer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,27 @@ t_log	*log_create(void)
 	return (log);
 }
 
-int	log_print(t_log *log, uint64_t time, int idx, char *arg, int death, int finished)
+void	log_death(t_log *log, int death)
 {
 	pthread_mutex_lock(&log->lock);
-	if (log->coder_died || death)
-	{
+	if (death)
 		log->coder_died = 1;
+	pthread_mutex_unlock(&log->lock);
+}
+
+void	log_finished(t_log *log, int finished)
+{
+	pthread_mutex_lock(&log->lock);
+	if (finished)
+		log->finished = 1;
+	pthread_mutex_unlock(&log->lock);
+}
+
+int	log_print(t_log *log, uint64_t time, int idx, char *arg)
+{
+	pthread_mutex_lock(&log->lock);
+	if (log->coder_died)
+	{
 		pthread_mutex_unlock(&log->lock);
 		return (2);
 	}
@@ -42,9 +57,8 @@ int	log_print(t_log *log, uint64_t time, int idx, char *arg, int death, int fini
 		ft_putstr_fd(ft_itoa(idx), 1);
 		ft_putstr_fd(arg, 1);
 	}
-	if (log->finished || finished)
+	if (log->finished)
 	{
-		log->finished = 1;
 		pthread_mutex_unlock(&log->lock);
 		return (3);
 	}

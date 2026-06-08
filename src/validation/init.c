@@ -80,7 +80,8 @@ void	arr_nodes_create(t_configs *config)
 	i = 0;
 	while (i < config->data[CODERS])
 	{
-		config->nodes[i] = node_create(i, config->coders[i]->wake, gettimems() + ((2 % (i + 1)) * DELAY));
+		config->nodes[i] = node_create(i, config->coders[i]->wake, gettimems()
+				+ ((2 % (i + 1)) * DELAY));
 		i++;
 	}
 	config->w_threads[i] = NULL;

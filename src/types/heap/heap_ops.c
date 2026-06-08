@@ -85,7 +85,8 @@ void	heap_sort(t_heap *heap, int i)
 		&& heap->nodes[left_child]->time < heap->nodes[i]->time)
 		smallest = left_child;
 	if (right_child < size
-		&& heap->nodes[right_child]->time < heap->nodes[i]->time && heap->nodes[right_child]->time < heap->nodes[left_child]->time)
+		&& heap->nodes[right_child]->time < heap->nodes[i]->time
+		&& heap->nodes[right_child]->time < heap->nodes[left_child]->time)
 		smallest = right_child;
 	if (smallest != i)
 	{

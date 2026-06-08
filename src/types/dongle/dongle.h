@@ -13,10 +13,10 @@
 #ifndef DONGLE_H
 # define DONGLE_H
 
+# include "../../tools.h"
 # include <pthread.h>
 # include <stdbool.h>
 # include <stdlib.h>
-#include "../../tools.h"
 
 typedef struct s_dongle
 {

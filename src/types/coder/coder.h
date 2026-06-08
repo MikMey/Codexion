@@ -21,7 +21,7 @@
 typedef struct s_coder
 {
 	size_t			idx;
-	uint64_t			compile_start;
+	uint64_t		compile_start;
 	int				state;
 	size_t			times_compiled;
 	pthread_mutex_t	lock;

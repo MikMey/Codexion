@@ -13,14 +13,14 @@
 #ifndef HEAP_H
 # define HEAP_H
 
+# include "../../tools.h"
 # include <pthread.h>
 # include <stdlib.h>
-#include "../../tools.h"
 
 typedef struct s_node_heap
 {
 	pthread_cond_t	wake;
-	uint64_t			time;
+	uint64_t		time;
 	int				idx;
 }					t_node_heap;
 
@@ -32,10 +32,11 @@ typedef struct s_heap
 
 t_heap				*heap_create(int size);
 int					heap_free(t_heap *heap);
-t_heap				*heap_insert(t_heap *heap, t_node_heap *node, uint64_t time);
+t_heap				*heap_insert(t_heap *heap, t_node_heap *node,
+						uint64_t time);
 void				heap_swap(t_heap *heap, int x, int y);
 void				heap_pop_coder(t_heap *heap, int idx);
 void				heap_sort(t_heap *heap, int i);
-t_node_heap	*node_create(int idx, pthread_cond_t wake, uint64_t time);
+t_node_heap			*node_create(int idx, pthread_cond_t wake, uint64_t time);
 
 #endif
